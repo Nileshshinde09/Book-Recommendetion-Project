@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <title>Book Recommend</title>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-secondary text-dark-50">
+        <div class="container-fluid">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link active fs-5" aria-current="page" href="/">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active fs-5" aria-current="page" href="/recommend">Recommend</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link fs-5" href="https://github.com/Nileshshinde09">Git Hub</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active fs-5" aria-current="page" href="#">Contact</a>
+                    </li>
+                </ul>
+                <form class="d-flex">
+                    <input class="form-control me-2 " type="search" placeholder="Search" aria-label="Search">
+                    <button class="btn btn-outline-success bg-light text-dark-50" type="submit">Search</button>
+                </form>
+            </div>
+        </div>
+    </nav>
+    <div class="p-3 border bg-light">
+        <form action="/recommend_books" method="post">
+            <div class="mb-3">
+                <label for="Recommend_Books" class="form-label fs-1">Recommend Books</label>
+                <input name="book_name_input" type="recommend_book" class="form-control border border-dark"><br>
+                <button type="submit" class="btn btn-primary bg-dark btn-lg">Submit</button>
+            </div>
+        </form>
+    </div>
+    </div>
+    {% if data %}
+    <div class="bg-dark">
+        <div class="container">
+            <div class="row">
+                {% for i in data %}
+                <div class="col-lg-3 mb-4 p-4">
+                    <div class="card bg-warning" style="width: 18rem;">
+                        <img src="{{i[2]}}" class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <p class="card-text text-center fs-5">{{i[0]}}</p>
+                            <p class="card-text text-center fst-italic">{{i[1]}}</p>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+    {% endif %}
+</body>
+
+</html>
