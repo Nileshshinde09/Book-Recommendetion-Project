@@ -1,8 +1,8 @@
 from flask import Flask,render_template,request
 import joblib
-import logging
+# import logging
 import numpy as np
-logging.basicConfig(filename="logfile.log",format=f'%(asctime)s %(levelname)s - %(message)s',filemode='a',datefmt="%Y-%m-%d %H:%M:%S")
+# logging.basicConfig(filename="logfile.log",format=f'%(asctime)s %(levelname)s - %(message)s',filemode='a',datefmt="%Y-%m-%d %H:%M:%S")
 popular = joblib.load("popular_info.joblib")
 books = joblib.load("books_info.joblib")
 pt = joblib.load("pt.joblib")
@@ -42,7 +42,8 @@ def recommend():
     # except error as e:
     #     logging.error(e)
     except Exception as e:
-        logging.exception(e)
+        pass
+#         logging.exception(e)
     return render_template("recommend.html",data = recommend_data)
 if __name__=="__main__":
     app.run(debug=True)
